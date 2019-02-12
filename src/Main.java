@@ -136,6 +136,13 @@ public class Main {
                 "  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |\n" +
                 "/'______|___||__###___|____|/'_______|____|_|__###___|___|"};
 
+        System.out.println("Save the Earth!\n" +
+                "The goverment fucked up, did not pay attention to climate and failed.\n" +
+                "Now it is your job to save the Earth by refreshing the air and making a stop to pollution.!\n" +
+                "\n" +
+                "Build Factories, Nuclear power plants, Forests and more to save the earth!\n" +
+                "Your goal is to get pollution to 0!, Good luck!\n" +
+                "\n");
 
         while (runGame)
         {
@@ -147,6 +154,7 @@ public class Main {
             pollution = pollution + pollutionTurn + pollutionStandard;
             money = money + moneyTurn + moneyStandard;
 
+            System.out.println("");
 
 
         }
