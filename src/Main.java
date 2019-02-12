@@ -6,11 +6,13 @@ public class Main {
     {
         Scanner scan = new Scanner(System.in);
 
-        int pollution;
-        int pollutionTurn;
-        int money;
-        int moneyTurn;
-        int turn;
+        int pollution = 0;
+        int pollutionTurn = 0;
+        int pollutionStandard = 500;
+        int money = 0;
+        int moneyTurn = 0;
+        int moneyStandard = 250;
+        int turn = 0;
 
         boolean runGame = true;
 
@@ -128,7 +130,11 @@ public class Main {
         while (runGame)
         {
             turn = turn + 1;
-            
+            pollution = pollution + pollutionTurn + pollutionStandard;
+            money = money + moneyTurn + moneyStandard;
+
+
+
         }
 
     }
