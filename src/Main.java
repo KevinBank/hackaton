@@ -4,6 +4,16 @@ public class Main {
 
     public static void main(String[] args)
     {
+        Farm farm = new Farm();
+        Forest forest = new Forest();
+        Windmills windmills = new Windmills();
+        Solarpanel solarpanel = new Solarpanel();
+        Factory factory = new Factory();
+        Oilrig oilrig = new Oilrig();
+        Airpurifier airpurifier = new Airpurifier();
+        Nuclear2 nuclear2 = new Nuclear2();
+        Nuclear3 nuclear3 = new Nuclear3();
+
         Scanner scan = new Scanner(System.in);
 
         int pollution = 0;
@@ -129,7 +139,11 @@ public class Main {
 
         while (runGame)
         {
+
             turn = turn + 1;
+
+            pollutionTurn =
+
             pollution = pollution + pollutionTurn + pollutionStandard;
             money = money + moneyTurn + moneyStandard;
 
