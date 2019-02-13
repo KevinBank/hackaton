@@ -155,12 +155,34 @@ public class Main {
         while (runGame) {
 
             turn = turn + 1;
+
             pollutionTurn = pollutionStandard + farm.pollution * farm.buildings + forest.pollution * forest.buildings + windmills.pollution * windmills.buildings + solarpanel.pollution * solarpanel.buildings + factory.pollution * factory.buildings + oilrig.pollution * oilrig.buildings + airpurifier.pollution * airpurifier.buildings + nuclear2.pollution * nuclear2.buildings + nuclear3.pollution * nuclear3.buildings;
             moneyTurn = moneyStandard + farm.production * farm.buildings + forest.production * forest.buildings + windmills.production * windmills.buildings + solarpanel.production * solarpanel.buildings + factory.production * factory.buildings + oilrig.production * oilrig.buildings + airpurifier.production * airpurifier.buildings + nuclear2.production * nuclear2.buildings + nuclear3.production * nuclear3.buildings;
+
             buildings = farm.buildings + forest.buildings + windmills.buildings + solarpanel.buildings + factory.buildings + oilrig.buildings + airpurifier.buildings + nuclear2.buildings + nuclear3.buildings;
-            System.out.println(farm.production * farm.buildings);
             pollution = pollution + pollutionTurn;
             money = money + moneyTurn;
+
+            farm.totalPollution = farm.pollution * farm.buildings;
+            farm.totalProduction = farm.production * farm.buildings;
+            forest.totalPollution = forest.pollution * forest.buildings;
+            forest.totalProduction = forest.production * forest.buildings;
+            windmills.totalPollution = windmills.pollution * windmills.buildings;
+            windmills.totalProduction = windmills.production * windmills.buildings;
+            solarpanel.totalPollution = solarpanel.pollution * solarpanel.buildings;
+            solarpanel.totalProduction = solarpanel.production * solarpanel.buildings;
+            factory.totalPollution = factory.pollution * factory.buildings;
+            factory.totalProduction = factory.production * factory.buildings;
+            oilrig.totalPollution = oilrig.pollution * oilrig.buildings;
+            oilrig.totalProduction = oilrig.production * oilrig.buildings;
+            airpurifier.totalPollution = airpurifier.pollution * airpurifier.buildings;
+            airpurifier.totalProduction = airpurifier.production * airpurifier.buildings;
+            nuclear2.totalPollution = nuclear2.pollution * nuclear2.buildings;
+            nuclear2.totalProduction = nuclear2.production * nuclear2.buildings;
+            nuclear3.totalPollution = nuclear3.pollution * nuclear3.buildings;
+            nuclear3.totalProduction = nuclear3.production * nuclear3.buildings;
+
+
 
             System.out.println("Day " + turn + "\n" +
                     "\n" +
@@ -184,7 +206,7 @@ public class Main {
                     "\n" +
                     "Windmills:\n" +
                     windmills.buildings + " Windmills built\n" +
-                    windmills.totalPollution + " Pollution changed by Windmills\n" +
+                    windmills.totalPollution + " Pollution reduced by Windmills\n" +
                     windmills.totalProduction + " Total Windmill production today\n" +
                     "\n" +
                     "Solarpanels:\n" +
@@ -243,7 +265,7 @@ public class Main {
 
             select = true;
 
-            if (pollution > 100000)
+            if (pollution >= 100000)
             {
                 System.out.println("You lost!");
                 runGame = false;
@@ -264,16 +286,16 @@ public class Main {
                             windmills.cost + " Windmills\n" +
                             solarpanel.cost + " Solarpanels\n" +
                             factory.cost + " Factory\n" +
-                            oilrig.cost + " Oil rig\n" +
-                            airpurifier.cost + " Air purifier\n" +
-                            nuclear2.cost + " Nuclear power plant type 2\n" +
-                            nuclear3.cost +  " Nuclear power plant type 3");
+                            oilrig.cost + " Oilrig\n" +
+                            airpurifier.cost + " Airpurifier\n" +
+                            nuclear2.cost + " (Nuclear2) Nuclear power plant type 2\n" +
+                            nuclear3.cost +  " (Nuclear3) Nuclear power plant type 3");
 
                     input = scan.nextLine();
                     input = input.toLowerCase();
 
                     if (input.equals(building[0])) {
-                        if (money > farm.cost) {
+                        if (money >= farm.cost) {
                             farm.buildings = farm.buildings + 1;
                             money = money - farm.cost;
                             System.out.println("You bought 1 farm\n" +
@@ -287,7 +309,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[1])) {
-                        if (money > forest.cost) {
+                        if (money >= forest.cost) {
                             forest.buildings = forest.buildings + 1;
                             money = money - forest.cost;
                             System.out.println("You bought 1 forest\n" +
@@ -301,7 +323,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[2])) {
-                        if (money > windmills.cost) {
+                        if (money >= windmills.cost) {
                             windmills.buildings = windmills.buildings + 1;
                             money = money - windmills.cost;
                             System.out.println("You bought 1 windmill\n" +
@@ -315,7 +337,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[3])) {
-                        if (money > solarpanel.cost) {
+                        if (money >= solarpanel.cost) {
                             solarpanel.buildings = solarpanel.buildings + 1;
                             money = money - solarpanel.cost;
                             System.out.println("You bought 1 solarpanel\n" +
@@ -329,7 +351,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[4])) {
-                        if (money > factory.cost) {
+                        if (money >= factory.cost) {
                             factory.buildings = factory.buildings + 1;
                             money = money - factory.cost;
                             System.out.println("You bought 1 factory\n" +
@@ -343,7 +365,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[5])) {
-                        if (money > oilrig.cost) {
+                        if (money >= oilrig.cost) {
                             oilrig.buildings = oilrig.buildings + 1;
                             money = money - oilrig.cost;
                             System.out.println("You bought 1 oilrig\n" +
@@ -357,7 +379,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[6])) {
-                        if (money > airpurifier.cost) {
+                        if (money >= airpurifier.cost) {
                             airpurifier.buildings = airpurifier.buildings + 1;
                             money = money - airpurifier.cost;
                             System.out.println("You bought 1 airpurifier\n" +
@@ -371,7 +393,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[7])) {
-                        if (money > nuclear2.cost) {
+                        if (money >= nuclear2.cost) {
                             nuclear2.buildings = nuclear2.buildings + 1;
                             money = money - nuclear2.cost;
                             System.out.println("You bought 1 nuclear power plant type 2\n" +
@@ -385,7 +407,7 @@ public class Main {
                         }
                     }
                     if (input.equals(building[8])) {
-                        if (money > nuclear3.cost) {
+                        if (money >= nuclear3.cost) {
                             nuclear3.buildings = nuclear3.buildings + 1;
                             money = money - nuclear3.cost;
                             System.out.println("You bought 1 nuclear power plant type 3\n" +
@@ -448,7 +470,6 @@ public class Main {
                             "Nuclear power plant type 3\n" +
                             nuclear3.pollution + " Pollution\n" +
                             nuclear3.production + " Money per day");
-
                 }
 
             }

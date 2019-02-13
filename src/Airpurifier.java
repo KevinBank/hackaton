@@ -4,9 +4,9 @@ public class Airpurifier extends Building
     public Airpurifier()
     {
         pollution = -1000;
-        totalPollution = pollution * buildings;
+        totalPollution = 0;
         production = -500;
-        totalProduction = production * buildings;
+        totalProduction = 0;
         cost = 3250;
         buildings = 0;
     }

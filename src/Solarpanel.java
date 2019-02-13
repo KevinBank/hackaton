@@ -4,9 +4,9 @@ public class Solarpanel extends Building
     public Solarpanel()
     {
         pollution = 0;
-        totalPollution = pollution * buildings;
+        totalPollution = 0;
         production = 250;
-        totalProduction = production * buildings;
+        totalProduction = 0;
         cost = 750;
         buildings = 0;
     }

@@ -4,9 +4,9 @@ public class Factory extends Building
     public Factory()
     {
         pollution = 1000;
-        totalPollution = pollution * buildings;
+        totalPollution = 0;
         production = 500;
-        totalProduction = production * buildings;
+        totalProduction = 0;
         cost = 250;
         buildings = 0;
     }
