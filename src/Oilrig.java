@@ -8,7 +8,7 @@ public class Oilrig extends Building
         production = 2500;
         totalProduction = production * buildings;
         cost = 1500;
-
+        buildings = 0;
     }
 
 }

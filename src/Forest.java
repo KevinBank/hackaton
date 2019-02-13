@@ -8,7 +8,7 @@ public class Forest extends  Building
         production = 25;
         totalProduction = production * buildings;
         cost = 500;
-
+        buildings = 0;
     }
 
 }

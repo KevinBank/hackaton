@@ -3,10 +3,10 @@ public class Farm extends Building
     public Farm()
     {
         pollution = -50;
-        totalPollution = (this.pollution * this.buildings);
+        totalPollution = (pollution * buildings);
         production = 25;
-        totalProduction = (this.production * this.buildings);
+        totalProduction = (production * buildings);
         cost = 150;
-
+        buildings = 0;
     }
 }

@@ -8,7 +8,7 @@ public class Nuclear2 extends Building
         production = 5000;
         totalProduction = production * buildings;
         cost = 7500;
-
+        buildings = 0;
     }
 
 }

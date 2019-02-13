@@ -8,8 +8,7 @@ public class Solarpanel extends Building
         production = 250;
         totalProduction = production * buildings;
         cost = 750;
-
-
+        buildings = 0;
     }
 
 }

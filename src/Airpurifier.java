@@ -8,7 +8,7 @@ public class Airpurifier extends Building
         production = -500;
         totalProduction = production * buildings;
         cost = 3250;
-
+        buildings = 0;
     }
 
 }

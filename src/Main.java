@@ -30,7 +30,7 @@ public class Main {
         boolean select;
 
         String input;
-        String[] command = {"stop", "build", "sleep", "info"};
+        String[] command = {"build", "sleep", "info"};
         String[] building = {"farm", "forest", "windmills", "solarpanel", "factory", "oilrig", "airpurifier", "nuclear2", "nuclear3",};
         /*
         String[] ascii = {
@@ -155,11 +155,10 @@ public class Main {
         while (runGame) {
 
             turn = turn + 1;
-
-            pollutionTurn = pollutionStandard + (farm.pollution * farm.buildings) + (forest.pollution * forest.buildings) + (windmills.pollution * windmills.pollution) + (solarpanel.pollution * solarpanel.buildings) + (factory.pollution * factory.buildings) + (oilrig.pollution * oilrig.buildings) + (airpurifier.pollution * airpurifier.buildings) + (nuclear2.pollution * nuclear2.buildings) + (nuclear3.pollution * nuclear3.buildings);
-            moneyTurn = moneyStandard + (farm.production * farm.buildings) + (forest.production * forest.buildings) + (windmills.production * windmills.production) + (solarpanel.production * solarpanel.buildings) + (factory.production * factory.buildings) + (oilrig.production * oilrig.buildings) + (airpurifier.production * airpurifier.buildings) + (nuclear2.production * nuclear2.buildings) + (nuclear3.production * nuclear3.buildings);
+            pollutionTurn = pollutionStandard + farm.pollution * farm.buildings + forest.pollution * forest.buildings + windmills.pollution * windmills.buildings + solarpanel.pollution * solarpanel.buildings + factory.pollution * factory.buildings + oilrig.pollution * oilrig.buildings + airpurifier.pollution * airpurifier.buildings + nuclear2.pollution * nuclear2.buildings + nuclear3.pollution * nuclear3.buildings;
+            moneyTurn = moneyStandard + farm.production * farm.buildings + forest.production * forest.buildings + windmills.production * windmills.buildings + solarpanel.production * solarpanel.buildings + factory.production * factory.buildings + oilrig.production * oilrig.buildings + airpurifier.production * airpurifier.buildings + nuclear2.production * nuclear2.buildings + nuclear3.production * nuclear3.buildings;
             buildings = farm.buildings + forest.buildings + windmills.buildings + solarpanel.buildings + factory.buildings + oilrig.buildings + airpurifier.buildings + nuclear2.buildings + nuclear3.buildings;
-
+            System.out.println(farm.production * farm.buildings);
             pollution = pollution + pollutionTurn;
             money = money + moneyTurn;
 
@@ -231,9 +230,6 @@ public class Main {
                     "\n" +
                     "You can do the following commands:\n" +
                     "\n" +
-                    "Stop\n" +
-                    "Stops any action and returns you to this menu\n" +
-                    "\n" +
                     "Build\n" +
                     "Shows the build menu and allows you to build\n" +
                     "\n" +
@@ -259,7 +255,7 @@ public class Main {
                 input = scan.nextLine();
                 input = input.toLowerCase();
 
-                if (input.equals(command[1])) {
+                if (input.equals(command[0])) {
                     System.out.println("What would you like to build?\n" +
                             "\n" +
                             "You have " + money + " money left\n" +
@@ -402,8 +398,12 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
+                    else
+                    {
+                        System.out.println("Please type any of the commands: Build, Sleep or Info");
+                    }
                 }
-                if (input.equals(command[2])) {
+                if (input.equals(command[1])) {
                     System.out.println(".");
                     thread.sleep(1000);
                     System.out.println(".");
@@ -412,7 +412,7 @@ public class Main {
                     thread.sleep(1000);
                     select = false;
                 }
-                if (input.equals(command[3])) {
+                if (input.equals(command[2])) {
                     System.out.println("Farms:\n" +
                             farm.pollution + " Pollution\n" +
                             farm.production + " Money per day\n" +

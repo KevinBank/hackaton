@@ -8,7 +8,7 @@ public class Windmills extends Building
         production = 125;
         totalProduction = production * buildings;
         cost = 500;
-
+        buildings = 0;
     }
 
 }
