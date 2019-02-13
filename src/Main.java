@@ -242,6 +242,7 @@ public class Main {
                     "Shows you info about all buildings\n" +
                     "\n" +
                     "\n");
+            select = true;
 
             while (select)
             {
@@ -268,67 +269,139 @@ public class Main {
 
                     if (input.equals(building[0]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 100)
+                        {
+                            farm.buildings = farm.buildings + 1;
+                            System.out.println("You bought 1 farm\n" +
+                                    "You have " + farm.buildings + " farms now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 100$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[1]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 500)
+                        {
+                            forest.buildings = forest.buildings + 1;
+                            System.out.println("You bought 1 forest\n" +
+                                    "You have " + forest.buildings + " forests now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 500$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[2]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 500)
+                        {
+                            windmills.buildings = windmills.buildings + 1;
+                            System.out.println("You bought 1 windmill\n" +
+                                    "You have " + windmills.buildings + " windmills now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 500$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[3]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 750)
+                        {
+                            solarpanel.buildings = solarpanel.buildings + 1;
+                            System.out.println("You bought 1 solarpanel\n" +
+                                    "You have " + solarpanel.buildings + " solarpanels now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 750$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[4]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 2500)
+                        {
+                            oilrig.buildings = oilrig.buildings + 1;
+                            System.out.println("You bought 1 oilrig\n" +
+                                    "You have " + oilrig.buildings + " oilrigs now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 2500$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[5]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 3250)
+                        {
+                            airpurifier.buildings = airpurifier.buildings + 1;
+                            System.out.println("You bought 1 airpurifier\n" +
+                                    "You have " + airpurifier.buildings + " airpurifiers now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 3250$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[6]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 5000)
+                        {
+                            nuclear2.buildings = nuclear2.buildings + 1;
+                            System.out.println("You bought 1 nuclear power plant type 2\n" +
+                                    "You have " + nuclear2.buildings + " nuclear power plants type 2 now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 5000$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                     if (input.equals(building[7]))
                     {
-                        farm.buildings = farm.buildings + 1;
-                        System.out.println("You bought 1 farm\n" +
-                                "You have " + farm.buildings + " farms now\n" +
-                                "\n" +
-                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (money > 25000)
+                        {
+                            nuclear3.buildings = nuclear3.buildings + 1;
+                            System.out.println("You bought 1 nuclear power plant type 3\n" +
+                                    "You have " + nuclear3.buildings + " nuclear power plants type 3 now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 25000$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
                 }
                 if (input.equals(command[2]))
