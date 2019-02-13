@@ -4,6 +4,7 @@ public class Farm extends Building
     {
         pollution = 0;
         totalPollution = pollution * buildings;
-
+        production = 0;
+        totalProduction = production * buildings;
     }
 }

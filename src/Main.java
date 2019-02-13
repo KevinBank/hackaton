@@ -23,6 +23,7 @@ public class Main {
         int moneyTurn = 0;
         int moneyStandard = 250;
         int turn = 0;
+        int buildings;
 
         boolean runGame = true;
 
@@ -141,7 +142,8 @@ public class Main {
                 "Now it is your job to save the Earth by refreshing the air and making a stop to pollution.!\n" +
                 "\n" +
                 "Build Factories, Nuclear power plants, Forests and more to save the earth!\n" +
-                "Your goal is to get pollution to 0!, Good luck!\n" +
+                "Your goal is to get pollution to 0!\n" +
+                "If your pollution ever reaches 25000 you lose :(\n" +
                 "\n");
 
         while (runGame)
@@ -149,13 +151,79 @@ public class Main {
 
             turn = turn + 1;
 
-            pollutionTurn =
+            pollutionTurn = pollutionStandard + farm.totalPollution + forest.totalPollution + windmills.totalPollution + solarpanel.totalPollution + factory.totalPollution + oilrig.totalPollution + airpurifier.totalPollution + nuclear2.totalPollution + nuclear3.totalPollution;
+            moneyTurn = moneyStandard + farm.totalProduction + forest.totalProduction + windmills.totalProduction + solarpanel.totalProduction + factory.totalProduction + oilrig.totalProduction + airpurifier.totalProduction + nuclear2.totalProduction + nuclear3.totalProduction;
+            buildings = farm.buildings + forest.buildings + windmills.buildings + solarpanel.buildings + factory.buildings + oilrig.buildings + airpurifier.buildings + nuclear2.buildings + nuclear3.buildings;
 
-            pollution = pollution + pollutionTurn + pollutionStandard;
-            money = money + moneyTurn + moneyStandard;
+            pollution = pollution + pollutionTurn;
+            money = money + moneyTurn;
 
-            System.out.println("");
+            System.out.println("Day " + turn + "\n" +
+                    "\n" +
+                    "Earths total pollution now is: " + pollution + "\n" +
+                    "Difference: " + pollutionTurn + "\n" +
+                    "\n" +
+                    "Your total money: " + money + "\n" +
+                    "You made " + money + " yesterday\n" +
+                    "\n" +
+                    "Building statistics:\n" +
+                    "\n" +
+                    "Farms:\n" +
+                    farm.buildings + " Farms built\n" +
+                    farm.totalPollution + " Pollution reduced by Farms\n" +
+                    farm.totalProduction + " Total Farm production today\n" +
+                    "\n" +
+                    "Forests:\n" +
+                    forest.buildings + " Forests built\n" +
+                    forest.totalPollution + " Pollution reduced by Forests\n" +
+                    forest.totalProduction + " Total Forest production today\n" +
+                    "\n" +
+                    "Windmills:\n" +
+                    windmills.buildings + " Windmills built\n" +
+                    windmills.totalPollution + " Pollution changed by Windmills\n" +
+                    windmills.totalProduction + " Total Windmill production today\n" +
+                    "\n" +
+                    "Solarpanels:\n" +
+                    solarpanel.buildings + " Solarpanels built\n" +
+                    solarpanel.totalPollution + " Pollution changed by Solarpanels\n" +
+                    solarpanel.totalProduction + " Total Solarpanel production today\n" +
+                    "\n" +
+                    "Factories:\n" +
+                    factory.buildings + " Factories built\n" +
+                    factory.totalPollution + " Pollution increased by Factories\n" +
+                    factory.totalProduction + " Total Factory production today\n" +
+                    "\n" +
+                    "Oil rigs:\n" +
+                    oilrig.buildings + " Oil rigs built\n" +
+                    oilrig.totalPollution + " Pollution increased by Oil rigs\n" +
+                    oilrig.totalProduction + " Total Oil rig production today\n" +
+                    "\n" +
+                    "Air purifiers:\n" +
+                    airpurifier.buildings + " Air purifiers built\n" +
+                    airpurifier.totalPollution + " Pollution reduced by Air purifiers\n" +
+                    airpurifier.totalProduction + " Total Air purifier cost per day\n" +
+                    "\n" +
+                    "Nuclear power plant type 2:\n" +
+                    nuclear2.buildings + " Nuclear power plants (type 2) built\n" +
+                    nuclear2.totalPollution + " Pollution increased by Nuclear power plants (type 2)\n" +
+                    nuclear2.totalProduction + " Total Nuclear power plant (Type 2) production today\n" +
+                    "\n" +
+                    "Nuclear power plant type 3:\n" +
+                    nuclear3.buildings + " Nuclear power plants (type 3) built\n" +
+                    nuclear3.totalPollution + " Pollution Increased by Nuclear power plants (type 3)\n" +
+                    nuclear3.totalProduction + " Total Nuclear power plant (type 3) production today\n" +
+                    "\n" +
+                    "\n" +
+                    "Totals:\n" +
+                    pollutionTurn + " Pollution changed today\n" +
+                    pollution + "/25000 Total pollution today\n" +
+                    "\n" +
+                    moneyTurn + " Money made today\n" +
+                    money + " Total money today\n" +
+                    "\n" +
+                    buildings + " Buildings built");
 
+            runGame = false;
 
         }
 
