@@ -3,11 +3,11 @@ public class Windmills extends Building
 
     public Windmills()
     {
-        pollution = 0;
+        pollution = -25;
         totalPollution = pollution * buildings;
-        production = 0;
+        production = 125;
         totalProduction = production * buildings;
-        cost = 400;
+        cost = 500;
 
     }
 

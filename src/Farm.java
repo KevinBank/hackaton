@@ -2,11 +2,11 @@ public class Farm extends Building
 {
     public Farm()
     {
-        pollution = 0;
+        pollution = -50;
         totalPollution = pollution * buildings;
-        production = 0;
+        production = 25;
         totalProduction = production * buildings;
-        cost = 100;
+        cost = 150;
 
     }
 }

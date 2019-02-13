@@ -3,9 +3,9 @@ public class Forest extends  Building
 
     public Forest()
     {
-        pollution = 0;
+        pollution = - 250;
         totalPollution = pollution * buildings;
-        production = 0;
+        production = 25;
         totalProduction = production * buildings;
         cost = 500;
 

@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args)
+    static Thread thread = new Thread();
+
+    public static void main(String[] args) throws InterruptedException
     {
         Farm farm = new Farm();
         Forest forest = new Forest();
@@ -26,7 +28,7 @@ public class Main {
         int buildings;
 
         boolean runGame = true;
-        boolean select = true;
+        boolean select;
 
         String input;
         String[] command = {"stop", "build", "sleep", "info"};
@@ -167,7 +169,7 @@ public class Main {
                     "Difference: " + pollutionTurn + "\n" +
                     "\n" +
                     "Your total money: " + money + "\n" +
-                    "You made " + money + " yesterday\n" +
+                    "You made " + moneyTurn + " yesterday\n" +
                     "\n" +
                     "Building statistics:\n" +
                     "\n" +
@@ -242,6 +244,7 @@ public class Main {
                     "Shows you info about all buildings\n" +
                     "\n" +
                     "\n");
+
             select = true;
 
             while (select)
@@ -259,6 +262,7 @@ public class Main {
                             "500$    Forest\n" +
                             "500$    Windmills\n" +
                             "750$    Solarpanels\n" +
+                            "500$    Factory\n" +
                             "2500$   Oil rig\n" +
                             "3250$   Air purifier\n" +
                             "5000$   Nuclear power plant type 2\n" +
@@ -337,6 +341,22 @@ public class Main {
                     }
                     if (input.equals(building[4]))
                     {
+                        if (money > 500)
+                        {
+                            factory.buildings = factory.buildings + 1;
+                            System.out.println("You bought 1 factory\n" +
+                                    "You have " + factory.buildings + " factories now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                        else
+                        {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 500$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                    if (input.equals(building[5]))
+                    {
                         if (money > 2500)
                         {
                             oilrig.buildings = oilrig.buildings + 1;
@@ -352,7 +372,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[5]))
+                    if (input.equals(building[6]))
                     {
                         if (money > 3250)
                         {
@@ -369,7 +389,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[6]))
+                    if (input.equals(building[7]))
                     {
                         if (money > 5000)
                         {
@@ -386,7 +406,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[7]))
+                    if (input.equals(building[8]))
                     {
                         if (money > 25000)
                         {
@@ -406,11 +426,51 @@ public class Main {
                 }
                 if (input.equals(command[2]))
                 {
-                    System.out.println("sleep");
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    break;
                 }
                 if (input.equals(command[3]))
                 {
-                    System.out.println("info");
+                    System.out.println("Farms:\n" +
+                            farm.pollution + " Pollution\n" +
+                            farm.production + " Money per day\n" +
+                            "\n" +
+                            "Forests:\n" +
+                            forest.pollution + " Pollution\n" +
+                            forest.production + " Money per day\n" +
+                            "\n" +
+                            "Windmills:\n" +
+                            windmills.pollution + " Pollution\n" +
+                            windmills.production + " Money per day\n" +
+                            "\n" +
+                            "Solarpanels:\n" +
+                            solarpanel.pollution + " Pollution\n" +
+                            solarpanel.production + " Money per day\n" +
+                            "\n" +
+                            "Factories\n" +
+                            factory.pollution + " Pollution\n" +
+                            factory.production + " Money per day\n" +
+                            "\n" +
+                            "Oil rigs:\n" +
+                            oilrig.pollution + " Pollution\n" +
+                            oilrig.production + " Money per day\n" +
+                            "\n" +
+                            "Airpurifiers:\n" +
+                            airpurifier.pollution + " Pollution\n" +
+                            airpurifier.production + " Money cost per day\n" +
+                            "\n" +
+                            "Nuclear power plant type 2\n" +
+                            nuclear2.pollution + " Pollution\n" +
+                            nuclear2.production + " Money per day\n" +
+                            "\n" +
+                            "Nuclear power plant type 3\n" +
+                            nuclear3.pollution + " Pollution\n" +
+                            nuclear3.production + " Money per day");
                 }
 
             }

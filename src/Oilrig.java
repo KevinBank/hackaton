@@ -3,7 +3,7 @@ public class Oilrig extends Building
 
     public Oilrig()
     {
-        pollution = 0;
+        pollution = 750;
         totalPollution = pollution * buildings;
         production = 0;
         totalProduction = production * buildings;
