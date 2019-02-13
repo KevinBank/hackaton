@@ -5,4 +5,5 @@ public class Building
     protected int production = 0; //money
     protected int totalProduction = 0; //money per turn
     protected int buildings = 0; //amount of buildings
+    protected int cost = 0; //building cost
 }

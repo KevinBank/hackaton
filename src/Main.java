@@ -27,6 +27,7 @@ public class Main {
 
         boolean runGame = true;
 
+        String[] command = {"Build", "Sleep"};
         String[] build = {"Farm", "Forest", "Windmills", "Solarpanel", "Factory", "Oilrig", "Airpurifier", "Nuclear2", "Nuclear3",};
         String[] ascii = {
                 //0 farm
@@ -221,7 +222,10 @@ public class Main {
                     moneyTurn + " Money made today\n" +
                     money + " Total money today\n" +
                     "\n" +
-                    buildings + " Buildings built");
+                    buildings + " Buildings built\n" +
+                    "\n" +
+                    "\n" +
+                    "Commands can do the following commands: ");
 
             runGame = false;
 

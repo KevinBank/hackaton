@@ -7,6 +7,7 @@ public class Solarpanel extends Building
         totalPollution = pollution * buildings;
         production = 0;
         totalProduction = production * buildings;
+        cost = 750;
 
 
     }
