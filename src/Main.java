@@ -256,22 +256,23 @@ public class Main {
                     System.out.println("What would you like to build?\n" +
                             "\n" +
                             "You have " + money + " money left\n" +
-                            "100$    Farm\n" +
-                            "500$    Forest\n" +
-                            "500$    Windmills\n" +
-                            "750$    Solarpanels\n" +
-                            "500$    Factory\n" +
-                            "2500$   Oil rig\n" +
-                            "3250$   Air purifier\n" +
-                            "5000$   Nuclear power plant type 2\n" +
-                            "25000$  Nuclear power plant type 3");
+                            farm.cost + " Farm\n" +
+                            forest.cost + " Forest\n" +
+                            windmills.cost + " Windmills\n" +
+                            solarpanel.cost + " Solarpanels\n" +
+                            factory.cost + " Factory\n" +
+                            oilrig.cost + " Oil rig\n" +
+                            airpurifier.cost + " Air purifier\n" +
+                            nuclear2.cost + " Nuclear power plant type 2\n" +
+                            nuclear3.cost +  " Nuclear power plant type 3");
 
                     input = scan.nextLine();
                     input = input.toLowerCase();
 
                     if (input.equals(building[0])) {
-                        if (money > 100) {
+                        if (money > farm.cost) {
                             farm.buildings = farm.buildings + 1;
+                            money = money - farm.cost;
                             System.out.println("You bought 1 farm\n" +
                                     "You have " + farm.buildings + " farms now\n" +
                                     "\n" +
@@ -283,8 +284,9 @@ public class Main {
                         }
                     }
                     if (input.equals(building[1])) {
-                        if (money > 500) {
+                        if (money > forest.cost) {
                             forest.buildings = forest.buildings + 1;
+                            money = money - forest.cost;
                             System.out.println("You bought 1 forest\n" +
                                     "You have " + forest.buildings + " forests now\n" +
                                     "\n" +
@@ -296,8 +298,9 @@ public class Main {
                         }
                     }
                     if (input.equals(building[2])) {
-                        if (money > 500) {
+                        if (money > windmills.cost) {
                             windmills.buildings = windmills.buildings + 1;
+                            money = money - windmills.cost;
                             System.out.println("You bought 1 windmill\n" +
                                     "You have " + windmills.buildings + " windmills now\n" +
                                     "\n" +
@@ -309,8 +312,9 @@ public class Main {
                         }
                     }
                     if (input.equals(building[3])) {
-                        if (money > 750) {
+                        if (money > solarpanel.cost) {
                             solarpanel.buildings = solarpanel.buildings + 1;
+                            money = money - solarpanel.cost;
                             System.out.println("You bought 1 solarpanel\n" +
                                     "You have " + solarpanel.buildings + " solarpanels now\n" +
                                     "\n" +
@@ -322,8 +326,9 @@ public class Main {
                         }
                     }
                     if (input.equals(building[4])) {
-                        if (money > 500) {
+                        if (money > factory.cost) {
                             factory.buildings = factory.buildings + 1;
+                            money = money - factory.cost;
                             System.out.println("You bought 1 factory\n" +
                                     "You have " + factory.buildings + " factories now\n" +
                                     "\n" +
@@ -333,105 +338,109 @@ public class Main {
                                     "It costs 500$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
-                        if (input.equals(building[5])) {
-                            if (money > 2500) {
-                                oilrig.buildings = oilrig.buildings + 1;
-                                System.out.println("You bought 1 oilrig\n" +
-                                        "You have " + oilrig.buildings + " oilrigs now\n" +
-                                        "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            } else {
-                                System.out.println("Not enough money!\n" +
-                                        "It costs 2500$ but you have " + money + "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            }
-                        }
-                        if (input.equals(building[6])) {
-                            if (money > 3250) {
-                                airpurifier.buildings = airpurifier.buildings + 1;
-                                System.out.println("You bought 1 airpurifier\n" +
-                                        "You have " + airpurifier.buildings + " airpurifiers now\n" +
-                                        "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            } else {
-                                System.out.println("Not enough money!\n" +
-                                        "It costs 3250$ but you have " + money + "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            }
-                        }
-                        if (input.equals(building[7])) {
-                            if (money > 5000) {
-                                nuclear2.buildings = nuclear2.buildings + 1;
-                                System.out.println("You bought 1 nuclear power plant type 2\n" +
-                                        "You have " + nuclear2.buildings + " nuclear power plants type 2 now\n" +
-                                        "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            } else {
-                                System.out.println("Not enough money!\n" +
-                                        "It costs 5000$ but you have " + money + "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            }
-                        }
-                        if (input.equals(building[8])) {
-                            if (money > 25000) {
-                                nuclear3.buildings = nuclear3.buildings + 1;
-                                System.out.println("You bought 1 nuclear power plant type 3\n" +
-                                        "You have " + nuclear3.buildings + " nuclear power plants type 3 now\n" +
-                                        "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            } else {
-                                System.out.println("Not enough money!\n" +
-                                        "It costs 25000$ but you have " + money + "\n" +
-                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                            }
+                    }
+                    if (input.equals(building[5])) {
+                        if (money > oilrig.cost) {
+                            oilrig.buildings = oilrig.buildings + 1;
+                            money = money - oilrig.cost;
+                            System.out.println("You bought 1 oilrig\n" +
+                                    "You have " + oilrig.buildings + " oilrigs now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        } else {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 2500$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(command[2])) {
-                        System.out.println(".");
-                        thread.sleep(1000);
-                        System.out.println(".");
-                        thread.sleep(1000);
-                        System.out.println(".");
-                        thread.sleep(1000);
-                        break;
+                    if (input.equals(building[6])) {
+                        if (money > airpurifier.cost) {
+                            airpurifier.buildings = airpurifier.buildings + 1;
+                            money = money - airpurifier.cost;
+                            System.out.println("You bought 1 airpurifier\n" +
+                                    "You have " + airpurifier.buildings + " airpurifiers now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        } else {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 3250$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
-                    if (input.equals(command[3])) {
-                        System.out.println("Farms:\n" +
-                                farm.pollution + " Pollution\n" +
-                                farm.production + " Money per day\n" +
-                                "\n" +
-                                "Forests:\n" +
-                                forest.pollution + " Pollution\n" +
-                                forest.production + " Money per day\n" +
-                                "\n" +
-                                "Windmills:\n" +
-                                windmills.pollution + " Pollution\n" +
-                                windmills.production + " Money per day\n" +
-                                "\n" +
-                                "Solarpanels:\n" +
-                                solarpanel.pollution + " Pollution\n" +
-                                solarpanel.production + " Money per day\n" +
-                                "\n" +
-                                "Factories\n" +
-                                factory.pollution + " Pollution\n" +
-                                factory.production + " Money per day\n" +
-                                "\n" +
-                                "Oil rigs:\n" +
-                                oilrig.pollution + " Pollution\n" +
-                                oilrig.production + " Money per day\n" +
-                                "\n" +
-                                "Airpurifiers:\n" +
-                                airpurifier.pollution + " Pollution\n" +
-                                airpurifier.production + " Money cost per day\n" +
-                                "\n" +
-                                "Nuclear power plant type 2\n" +
-                                nuclear2.pollution + " Pollution\n" +
-                                nuclear2.production + " Money per day\n" +
-                                "\n" +
-                                "Nuclear power plant type 3\n" +
-                                nuclear3.pollution + " Pollution\n" +
-                                nuclear3.production + " Money per day");
+                    if (input.equals(building[7])) {
+                        if (money > nuclear2.cost) {
+                            nuclear2.buildings = nuclear2.buildings + 1;
+                            money = money - nuclear2.cost;
+                            System.out.println("You bought 1 nuclear power plant type 2\n" +
+                                    "You have " + nuclear2.buildings + " nuclear power plants type 2 now\n" +
+                                    "\n" +
+                                       "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        } else {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 5000$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
                     }
+                    if (input.equals(building[8])) {
+                        if (money > nuclear3.cost) {
+                            nuclear3.buildings = nuclear3.buildings + 1;
+                            money = money - nuclear3.cost;
+                            System.out.println("You bought 1 nuclear power plant type 3\n" +
+                                    "You have " + nuclear3.buildings + " nuclear power plants type 3 now\n" +
+                                    "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        } else {
+                            System.out.println("Not enough money!\n" +
+                                    "It costs 25000$ but you have " + money + "\n" +
+                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        }
+                    }
+                }
+                if (input.equals(command[2])) {
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    System.out.println(".");
+                    thread.sleep(1000);
+                    break;
+                }
+                if (input.equals(command[3])) {
+                    System.out.println("Farms:\n" +
+                            farm.pollution + " Pollution\n" +
+                            farm.production + " Money per day\n" +
+                            "\n" +
+                            "Forests:\n" +
+                            forest.pollution + " Pollution\n" +
+                            forest.production + " Money per day\n" +
+                            "\n" +
+                            "Windmills:\n" +
+                            windmills.pollution + " Pollution\n" +
+                            windmills.production + " Money per day\n" +
+                            "\n" +
+                            "Solarpanels:\n" +
+                            solarpanel.pollution + " Pollution\n" +
+                            solarpanel.production + " Money per day\n" +
+                            "\n" +
+                            "Factories\n" +
+                            factory.pollution + " Pollution\n" +
+                            factory.production + " Money per day\n" +
+                            "\n" +
+                            "Oil rigs:\n" +
+                            oilrig.pollution + " Pollution\n" +
+                            oilrig.production + " Money per day\n" +
+                            "\n" +
+                            "Airpurifiers:\n" +
+                            airpurifier.pollution + " Pollution\n" +
+                            airpurifier.production + " Money cost per day\n" +
+                            "\n" +
+                            "Nuclear power plant type 2\n" +
+                            nuclear2.pollution + " Pollution\n" +
+                            nuclear2.production + " Money per day\n" +
+                            "\n" +
+                            "Nuclear power plant type 3\n" +
+                            nuclear3.pollution + " Pollution\n" +
+                            nuclear3.production + " Money per day");
 
                 }
 

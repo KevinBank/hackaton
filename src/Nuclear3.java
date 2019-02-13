@@ -3,11 +3,11 @@ public class Nuclear3 extends Building
 
     public Nuclear3()
     {
-        pollution = 0;
+        pollution = 250;
         totalPollution = pollution * buildings;
-        production = 0;
+        production = 7500;
         totalProduction = production * buildings;
-        cost = 25000;
+        cost = 50000;
 
     }
 
