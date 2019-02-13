@@ -4,8 +4,7 @@ public class Main {
 
     static Thread thread = new Thread();
 
-    public static void main(String[] args) throws InterruptedException
-    {
+    public static void main(String[] args) throws InterruptedException {
         Farm farm = new Farm();
         Forest forest = new Forest();
         Windmills windmills = new Windmills();
@@ -19,10 +18,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         int pollution = 0;
-        int pollutionTurn = 0;
+        int pollutionTurn;
         int pollutionStandard = 500;
         int money = 0;
-        int moneyTurn = 0;
+        int moneyTurn;
         int moneyStandard = 250;
         int turn = 0;
         int buildings;
@@ -33,114 +32,116 @@ public class Main {
         String input;
         String[] command = {"stop", "build", "sleep", "info"};
         String[] building = {"farm", "forest", "windmills", "solarpanel", "factory", "oilrig", "airpurifier", "nuclear2", "nuclear3",};
+        /*
         String[] ascii = {
                 //0 farm
                 "                         _.-^-._    .--.\n" +
-                "                      .-'   _   '-. |__|\n" +
-                "                     /     |_|     \\|  |\n" +
-                "                    /               \\  |\n" +
-                "                   /|     _____     |\\ |\n" +
-                "                    |    |==|==|    |  |\n" +
-                "|---|---|---|---|---|    |--|--|    |  |\n" +
-                "|---|---|---|---|---|    |==|==|    |  |\n" +
-                "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+                        "                      .-'   _   '-. |__|\n" +
+                        "                     /     |_|     \\|  |\n" +
+                        "                    /               \\  |\n" +
+                        "                   /|     _____     |\\ |\n" +
+                        "                    |    |==|==|    |  |\n" +
+                        "|---|---|---|---|---|    |--|--|    |  |\n" +
+                        "|---|---|---|---|---|    |==|==|    |  |\n" +
+                        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
                 //1 forest
                 "            ,@@@@@@@,\n" +
-                "    ,,,.   ,@@@@@@/@@,  .oo8888o.\n" +
-                " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n" +
-                ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n" +
-                "%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n" +
-                "%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n" +
-                "`&%\\ ` /%&'    |.|        \\ '|8'\n" +
-                "    |o|        | |         | |\n" +
-                "    |.|        | |         | |\n" +
-                " \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n",
+                        "    ,,,.   ,@@@@@@/@@,  .oo8888o.\n" +
+                        " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n" +
+                        ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n" +
+                        "%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n" +
+                        "%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n" +
+                        "`&%\\ ` /%&'    |.|        \\ '|8'\n" +
+                        "    |o|        | |         | |\n" +
+                        "    |.|        | |         | |\n" +
+                        " \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n",
                 //2 windmill
                 "                                        __\n" +
-                "                 ,-_                  (`  ).\n" +
-                "                 |-_'-,              (     ).\n" +
-                "                 |-_'-'           _(        '`.\n" +
-                "        _        |-_'/        .=(`(      .     )\n" +
-                "       /;-,_     |-_'        (     (.__.:-`-_.'\n" +
-                "      /-.-;,-,___|'          `(       ) )\n" +
-                "     /;-;-;-;_;_/|\\_ _ _ _ _   ` __.:'   )\n" +
-                "        x_( __`|_P_|`-;-;-;,|        `--'\n" +
-                "        |\\ \\    _||   `-;-;-'\n" +
-                "        | \\`   -_|.      '-'\n" +
-                "        | /   /-_| `\n" +
-                "        |/   ,'-_|  \\\n" +
-                "        /____|'-_|___\\\n" +
-                " _..,____]__|_\\-_'|_[___,.._\n" +
-                "'                          ``'--,..,.   ",
+                        "                 ,-_                  (`  ).\n" +
+                        "                 |-_'-,              (     ).\n" +
+                        "                 |-_'-'           _(        '`.\n" +
+                        "        _        |-_'/        .=(`(      .     )\n" +
+                        "       /;-,_     |-_'        (     (.__.:-`-_.'\n" +
+                        "      /-.-;,-,___|'          `(       ) )\n" +
+                        "     /;-;-;-;_;_/|\\_ _ _ _ _   ` __.:'   )\n" +
+                        "        x_( __`|_P_|`-;-;-;,|        `--'\n" +
+                        "        |\\ \\    _||   `-;-;-'\n" +
+                        "        | \\`   -_|.      '-'\n" +
+                        "        | /   /-_| `\n" +
+                        "        |/   ,'-_|  \\\n" +
+                        "        /____|'-_|___\\\n" +
+                        " _..,____]__|_\\-_'|_[___,.._\n" +
+                        "'                          ``'--,..,.   ",
                 //3 solarpanels
                 "     ___________       ___________       ___________       ___________  \n" +
-                "    /   /  /   /      /   /  /   /      /   /  /   /      /   /  /   /  \n" +
-                "   /---/--/---/      /---/--/---/      /---/--/---/      /---/--/---/   \n" +
-                "  /---/--/---/|     /---/--/---/|     /---/--/---/|     /---/--/---/|   \n" +
-                " /---/--/---/ |    /---/--/---/ |    /---/--/---/ |    /---/--/---/ |   \n" +
-                "/___/__/___/| |   /___/__/___/| |   /___/__/___/| |   /___/__/___/| |   ",
+                        "    /   /  /   /      /   /  /   /      /   /  /   /      /   /  /   /  \n" +
+                        "   /---/--/---/      /---/--/---/      /---/--/---/      /---/--/---/   \n" +
+                        "  /---/--/---/|     /---/--/---/|     /---/--/---/|     /---/--/---/|   \n" +
+                        " /---/--/---/ |    /---/--/---/ |    /---/--/---/ |    /---/--/---/ |   \n" +
+                        "/___/__/___/| |   /___/__/___/| |   /___/__/___/| |   /___/__/___/| |   ",
                 //4 factory
                 "                 __  . .* ,\n" +
-                "               ~#@#%(\" .,$ @\n" +
-                "              .\"^ ';\"\n" +
-                "             ..\n" +
-                "            ;. :                                   . .\n" +
-                "            ;==:                     ,,   ,.@#(&*.;'\n" +
-                "            ;. :                   .;#$% & ^^&\n" +
-                "            ;==:                   &  ......\n" +
-                "            ;. :                   ,,;      :\n" +
-                "            ;==:  ._______.       ;  ;      :\n" +
-                "            ;. :  ;    ###:__.    ;  ;      :\n" +
-                "___________.'  `._;       :  :__.' .'        `.__________________",
+                        "               ~#@#%(\" .,$ @\n" +
+                        "              .\"^ ';\"\n" +
+                        "             ..\n" +
+                        "            ;. :                                   . .\n" +
+                        "            ;==:                     ,,   ,.@#(&*.;'\n" +
+                        "            ;. :                   .;#$% & ^^&\n" +
+                        "            ;==:                   &  ......\n" +
+                        "            ;. :                   ,,;      :\n" +
+                        "            ;==:  ._______.       ;  ;      :\n" +
+                        "            ;. :  ;    ###:__.    ;  ;      :\n" +
+                        "___________.'  `._;       :  :__.' .'        `.__________________",
                 //5 oilrig
                 "              /\\\n" +
-                "             /\\/\\\n" +
-                "            _|/\\|_\n" +
-                "           |______|\n" +
-                "            |\\/\\/|\n" +
-                "           \\|/\\/\\|   .''`/:\n" +
-                "   :\\''.    \\`'. |  ||  /  :\n" +
-                "   : \\ ||   |\\ |||  || /    o\n" +
-                "   j _\\||__/__\\||_\\_||/___\n" +
-                "     |___________________|\n" +
-                "      |  |   |   |   |  |\n" +
-                "~~~~~~|~~|~~~|~~~|~~~|~~|~~~~~~",
+                        "             /\\/\\\n" +
+                        "            _|/\\|_\n" +
+                        "           |______|\n" +
+                        "            |\\/\\/|\n" +
+                        "           \\|/\\/\\|   .''`/:\n" +
+                        "   :\\''.    \\`'. |  ||  /  :\n" +
+                        "   : \\ ||   |\\ |||  || /    o\n" +
+                        "   j _\\||__/__\\||_\\_||/___\n" +
+                        "     |___________________|\n" +
+                        "      |  |   |   |   |  |\n" +
+                        "~~~~~~|~~|~~~|~~~|~~~|~~|~~~~~~",
                 //6 airpurifier
                 " _/*\\_    _/*\\_    _/*\\_    _/*\\_   \n" +
-                "/     \\  /     \\  /     \\  /     \\  \n" +
-                "|OXYGN|  |OXYGN|  |OXYGN|  |OXYGN|  \n" +
-                "|     |  |     |  |     |  |     |  \n" +
-                "|     |  |     |  |     |  |     |  \n" +
-                "|     |  |     |  |     |  |     |  \n" +
-                "|     |  |     |  |     |  |     |  \n" +
-                "|     |  |     |  |     |  |     |  \n" +
-                "\\_____/  \\_____/  \\_____/  \\_____/  ",
+                        "/     \\  /     \\  /     \\  /     \\  \n" +
+                        "|OXYGN|  |OXYGN|  |OXYGN|  |OXYGN|  \n" +
+                        "|     |  |     |  |     |  |     |  \n" +
+                        "|     |  |     |  |     |  |     |  \n" +
+                        "|     |  |     |  |     |  |     |  \n" +
+                        "|     |  |     |  |     |  |     |  \n" +
+                        "|     |  |     |  |     |  |     |  \n" +
+                        "\\_____/  \\_____/  \\_____/  \\_____/  ",
                 //7 nuclear2
                 "          ) ) )                     ) ) )\n" +
-                "        ( ( (                      ( ( (\n" +
-                "      ) ) )                       ) ) )\n" +
-                "   (~~~~~~~~~)                 (~~~~~~~~~)\n" +
-                "    |   2   |                   |   2   |\n" +
-                "    |       |                   |       |\n" +
-                "    |      _._                  |       _._\n" +
-                "    |    /'   `\\                |     /'   `\\\n" +
-                "    |   |   N   |               |    |   N   |\n" +
-                "    |   |   |~~~~~~~~~~~~~~|    |    |    |~~~~~~~~~~~~~~|\n" +
-                "  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |\n" +
-                "/'______|___||__###___|____|/'_______|____|_|__###___|___|",
+                        "        ( ( (                      ( ( (\n" +
+                        "      ) ) )                       ) ) )\n" +
+                        "   (~~~~~~~~~)                 (~~~~~~~~~)\n" +
+                        "    |   2   |                   |   2   |\n" +
+                        "    |       |                   |       |\n" +
+                        "    |      _._                  |       _._\n" +
+                        "    |    /'   `\\                |     /'   `\\\n" +
+                        "    |   |   N   |               |    |   N   |\n" +
+                        "    |   |   |~~~~~~~~~~~~~~|    |    |    |~~~~~~~~~~~~~~|\n" +
+                        "  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |\n" +
+                        "/'______|___||__###___|____|/'_______|____|_|__###___|___|",
                 //8 nuclear3
                 "          ) ) )                     ) ) )\n" +
-                "        ( ( (                      ( ( (\n" +
-                "      ) ) )                       ) ) )\n" +
-                "   (~~~~~~~~~)                 (~~~~~~~~~)\n" +
-                "    |   3   |                   |   3   |\n" +
-                "    |       |                   |       |\n" +
-                "    |      _._                  |       _._\n" +
-                "    |    /'   `\\                |     /'   `\\\n" +
-                "    |   |   N   |               |    |   N   |\n" +
-                "    |   |   |~~~~~~~~~~~~~~|    |    |    |~~~~~~~~~~~~~~|\n" +
-                "  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |\n" +
-                "/'______|___||__###___|____|/'_______|____|_|__###___|___|"};
+                        "        ( ( (                      ( ( (\n" +
+                        "      ) ) )                       ) ) )\n" +
+                        "   (~~~~~~~~~)                 (~~~~~~~~~)\n" +
+                        "    |   3   |                   |   3   |\n" +
+                        "    |       |                   |       |\n" +
+                        "    |      _._                  |       _._\n" +
+                        "    |    /'   `\\                |     /'   `\\\n" +
+                        "    |   |   N   |               |    |   N   |\n" +
+                        "    |   |   |~~~~~~~~~~~~~~|    |    |    |~~~~~~~~~~~~~~|\n" +
+                        "  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |\n" +
+                        "/'______|___||__###___|____|/'_______|____|_|__###___|___|"};
+                        */
 
         System.out.println("Save the Earth!\n" +
                 "The goverment fucked up, did not pay attention to climate and failed.\n" +
@@ -151,8 +152,7 @@ public class Main {
                 "If your pollution ever reaches 25000 you lose :(\n" +
                 "\n");
 
-        while (runGame)
-        {
+        while (runGame) {
 
             turn = turn + 1;
 
@@ -247,14 +247,12 @@ public class Main {
 
             select = true;
 
-            while (select)
-            {
+            while (select) {
 
                 input = scan.nextLine();
                 input = input.toLowerCase();
 
-                if (input.equals(command[1]))
-                {
+                if (input.equals(command[1])) {
                     System.out.println("What would you like to build?\n" +
                             "\n" +
                             "You have " + money + " money left\n" +
@@ -271,211 +269,174 @@ public class Main {
                     input = scan.nextLine();
                     input = input.toLowerCase();
 
-                    if (input.equals(building[0]))
-                    {
-                        if (money > 100)
-                        {
+                    if (input.equals(building[0])) {
+                        if (money > 100) {
                             farm.buildings = farm.buildings + 1;
                             System.out.println("You bought 1 farm\n" +
                                     "You have " + farm.buildings + " farms now\n" +
                                     "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("Not enough money!\n" +
                                     "It costs 100$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[1]))
-                    {
-                        if (money > 500)
-                        {
+                    if (input.equals(building[1])) {
+                        if (money > 500) {
                             forest.buildings = forest.buildings + 1;
                             System.out.println("You bought 1 forest\n" +
                                     "You have " + forest.buildings + " forests now\n" +
                                     "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("Not enough money!\n" +
                                     "It costs 500$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[2]))
-                    {
-                        if (money > 500)
-                        {
+                    if (input.equals(building[2])) {
+                        if (money > 500) {
                             windmills.buildings = windmills.buildings + 1;
                             System.out.println("You bought 1 windmill\n" +
                                     "You have " + windmills.buildings + " windmills now\n" +
                                     "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("Not enough money!\n" +
                                     "It costs 500$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[3]))
-                    {
-                        if (money > 750)
-                        {
+                    if (input.equals(building[3])) {
+                        if (money > 750) {
                             solarpanel.buildings = solarpanel.buildings + 1;
                             System.out.println("You bought 1 solarpanel\n" +
                                     "You have " + solarpanel.buildings + " solarpanels now\n" +
                                     "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("Not enough money!\n" +
                                     "It costs 750$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
-                    if (input.equals(building[4]))
-                    {
-                        if (money > 500)
-                        {
+                    if (input.equals(building[4])) {
+                        if (money > 500) {
                             factory.buildings = factory.buildings + 1;
                             System.out.println("You bought 1 factory\n" +
                                     "You have " + factory.buildings + " factories now\n" +
                                     "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("Not enough money!\n" +
                                     "It costs 500$ but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
-                    if (input.equals(building[5]))
-                    {
-                        if (money > 2500)
-                        {
-                            oilrig.buildings = oilrig.buildings + 1;
-                            System.out.println("You bought 1 oilrig\n" +
-                                    "You have " + oilrig.buildings + " oilrigs now\n" +
-                                    "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (input.equals(building[5])) {
+                            if (money > 2500) {
+                                oilrig.buildings = oilrig.buildings + 1;
+                                System.out.println("You bought 1 oilrig\n" +
+                                        "You have " + oilrig.buildings + " oilrigs now\n" +
+                                        "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            } else {
+                                System.out.println("Not enough money!\n" +
+                                        "It costs 2500$ but you have " + money + "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            }
                         }
-                        else
-                        {
-                            System.out.println("Not enough money!\n" +
-                                    "It costs 2500$ but you have " + money + "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (input.equals(building[6])) {
+                            if (money > 3250) {
+                                airpurifier.buildings = airpurifier.buildings + 1;
+                                System.out.println("You bought 1 airpurifier\n" +
+                                        "You have " + airpurifier.buildings + " airpurifiers now\n" +
+                                        "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            } else {
+                                System.out.println("Not enough money!\n" +
+                                        "It costs 3250$ but you have " + money + "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            }
                         }
-                    }
-                    if (input.equals(building[6]))
-                    {
-                        if (money > 3250)
-                        {
-                            airpurifier.buildings = airpurifier.buildings + 1;
-                            System.out.println("You bought 1 airpurifier\n" +
-                                    "You have " + airpurifier.buildings + " airpurifiers now\n" +
-                                    "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (input.equals(building[7])) {
+                            if (money > 5000) {
+                                nuclear2.buildings = nuclear2.buildings + 1;
+                                System.out.println("You bought 1 nuclear power plant type 2\n" +
+                                        "You have " + nuclear2.buildings + " nuclear power plants type 2 now\n" +
+                                        "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            } else {
+                                System.out.println("Not enough money!\n" +
+                                        "It costs 5000$ but you have " + money + "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            }
                         }
-                        else
-                        {
-                            System.out.println("Not enough money!\n" +
-                                    "It costs 3250$ but you have " + money + "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                    }
-                    if (input.equals(building[7]))
-                    {
-                        if (money > 5000)
-                        {
-                            nuclear2.buildings = nuclear2.buildings + 1;
-                            System.out.println("You bought 1 nuclear power plant type 2\n" +
-                                    "You have " + nuclear2.buildings + " nuclear power plants type 2 now\n" +
-                                    "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
-                            System.out.println("Not enough money!\n" +
-                                    "It costs 5000$ but you have " + money + "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                    }
-                    if (input.equals(building[8]))
-                    {
-                        if (money > 25000)
-                        {
-                            nuclear3.buildings = nuclear3.buildings + 1;
-                            System.out.println("You bought 1 nuclear power plant type 3\n" +
-                                    "You have " + nuclear3.buildings + " nuclear power plants type 3 now\n" +
-                                    "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
-                        }
-                        else
-                        {
-                            System.out.println("Not enough money!\n" +
-                                    "It costs 25000$ but you have " + money + "\n" +
-                                    "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                        if (input.equals(building[8])) {
+                            if (money > 25000) {
+                                nuclear3.buildings = nuclear3.buildings + 1;
+                                System.out.println("You bought 1 nuclear power plant type 3\n" +
+                                        "You have " + nuclear3.buildings + " nuclear power plants type 3 now\n" +
+                                        "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            } else {
+                                System.out.println("Not enough money!\n" +
+                                        "It costs 25000$ but you have " + money + "\n" +
+                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                            }
                         }
                     }
-                }
-                if (input.equals(command[2]))
-                {
-                    System.out.println(".");
-                    thread.sleep(1000);
-                    System.out.println(".");
-                    thread.sleep(1000);
-                    System.out.println(".");
-                    thread.sleep(1000);
-                    break;
-                }
-                if (input.equals(command[3]))
-                {
-                    System.out.println("Farms:\n" +
-                            farm.pollution + " Pollution\n" +
-                            farm.production + " Money per day\n" +
-                            "\n" +
-                            "Forests:\n" +
-                            forest.pollution + " Pollution\n" +
-                            forest.production + " Money per day\n" +
-                            "\n" +
-                            "Windmills:\n" +
-                            windmills.pollution + " Pollution\n" +
-                            windmills.production + " Money per day\n" +
-                            "\n" +
-                            "Solarpanels:\n" +
-                            solarpanel.pollution + " Pollution\n" +
-                            solarpanel.production + " Money per day\n" +
-                            "\n" +
-                            "Factories\n" +
-                            factory.pollution + " Pollution\n" +
-                            factory.production + " Money per day\n" +
-                            "\n" +
-                            "Oil rigs:\n" +
-                            oilrig.pollution + " Pollution\n" +
-                            oilrig.production + " Money per day\n" +
-                            "\n" +
-                            "Airpurifiers:\n" +
-                            airpurifier.pollution + " Pollution\n" +
-                            airpurifier.production + " Money cost per day\n" +
-                            "\n" +
-                            "Nuclear power plant type 2\n" +
-                            nuclear2.pollution + " Pollution\n" +
-                            nuclear2.production + " Money per day\n" +
-                            "\n" +
-                            "Nuclear power plant type 3\n" +
-                            nuclear3.pollution + " Pollution\n" +
-                            nuclear3.production + " Money per day");
+                    if (input.equals(command[2])) {
+                        System.out.println(".");
+                        thread.sleep(1000);
+                        System.out.println(".");
+                        thread.sleep(1000);
+                        System.out.println(".");
+                        thread.sleep(1000);
+                        break;
+                    }
+                    if (input.equals(command[3])) {
+                        System.out.println("Farms:\n" +
+                                farm.pollution + " Pollution\n" +
+                                farm.production + " Money per day\n" +
+                                "\n" +
+                                "Forests:\n" +
+                                forest.pollution + " Pollution\n" +
+                                forest.production + " Money per day\n" +
+                                "\n" +
+                                "Windmills:\n" +
+                                windmills.pollution + " Pollution\n" +
+                                windmills.production + " Money per day\n" +
+                                "\n" +
+                                "Solarpanels:\n" +
+                                solarpanel.pollution + " Pollution\n" +
+                                solarpanel.production + " Money per day\n" +
+                                "\n" +
+                                "Factories\n" +
+                                factory.pollution + " Pollution\n" +
+                                factory.production + " Money per day\n" +
+                                "\n" +
+                                "Oil rigs:\n" +
+                                oilrig.pollution + " Pollution\n" +
+                                oilrig.production + " Money per day\n" +
+                                "\n" +
+                                "Airpurifiers:\n" +
+                                airpurifier.pollution + " Pollution\n" +
+                                airpurifier.production + " Money cost per day\n" +
+                                "\n" +
+                                "Nuclear power plant type 2\n" +
+                                nuclear2.pollution + " Pollution\n" +
+                                nuclear2.production + " Money per day\n" +
+                                "\n" +
+                                "Nuclear power plant type 3\n" +
+                                nuclear3.pollution + " Pollution\n" +
+                                nuclear3.production + " Money per day");
+                    }
+
                 }
 
             }
 
         }
-
     }
 }
