@@ -149,15 +149,15 @@ public class Main {
                 "\n" +
                 "Build Factories, Nuclear power plants, Forests and more to save the earth!\n" +
                 "Your goal is to get pollution to 0!\n" +
-                "If your pollution ever reaches 25000 you lose :(\n" +
+                "If your pollution ever reaches 100000 you lose :(\n" +
                 "\n");
 
         while (runGame) {
 
             turn = turn + 1;
 
-            pollutionTurn = pollutionStandard + farm.totalPollution + forest.totalPollution + windmills.totalPollution + solarpanel.totalPollution + factory.totalPollution + oilrig.totalPollution + airpurifier.totalPollution + nuclear2.totalPollution + nuclear3.totalPollution;
-            moneyTurn = moneyStandard + farm.totalProduction + forest.totalProduction + windmills.totalProduction + solarpanel.totalProduction + factory.totalProduction + oilrig.totalProduction + airpurifier.totalProduction + nuclear2.totalProduction + nuclear3.totalProduction;
+            pollutionTurn = pollutionStandard + (farm.pollution * farm.buildings) + (forest.pollution * forest.buildings) + (windmills.pollution * windmills.pollution) + (solarpanel.pollution * solarpanel.buildings) + (factory.pollution * factory.buildings) + (oilrig.pollution * oilrig.buildings) + (airpurifier.pollution * airpurifier.buildings) + (nuclear2.pollution * nuclear2.buildings) + (nuclear3.pollution * nuclear3.buildings);
+            moneyTurn = moneyStandard + (farm.production * farm.buildings) + (forest.production * forest.buildings) + (windmills.production * windmills.production) + (solarpanel.production * solarpanel.buildings) + (factory.production * factory.buildings) + (oilrig.production * oilrig.buildings) + (airpurifier.production * airpurifier.buildings) + (nuclear2.production * nuclear2.buildings) + (nuclear3.production * nuclear3.buildings);
             buildings = farm.buildings + forest.buildings + windmills.buildings + solarpanel.buildings + factory.buildings + oilrig.buildings + airpurifier.buildings + nuclear2.buildings + nuclear3.buildings;
 
             pollution = pollution + pollutionTurn;
@@ -221,12 +221,12 @@ public class Main {
                     "\n" +
                     "Totals:\n" +
                     pollutionTurn + " Pollution changed today\n" +
-                    pollution + "/25000 Total pollution today\n" +
+                    pollution + "/100000 Total pollution today\n" +
                     "\n" +
                     moneyTurn + " Money made today\n" +
                     money + " Total money today\n" +
                     "\n" +
-                    buildings + " Buildings built\n" +
+                    buildings + " Building(s) built\n" +
                     "\n" +
                     "\n" +
                     "You can do the following commands:\n" +
@@ -246,6 +246,13 @@ public class Main {
                     "\n");
 
             select = true;
+
+            if (pollution > 100000)
+            {
+                System.out.println("You lost!");
+                runGame = false;
+                select = false;
+            }
 
             while (select) {
 
@@ -279,7 +286,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 100$ but you have " + money + "\n" +
+                                    "It costs " + farm.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -293,7 +300,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 500$ but you have " + money + "\n" +
+                                    "It costs " + forest.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -307,7 +314,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 500$ but you have " + money + "\n" +
+                                    "It costs " + windmills.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -321,7 +328,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 750$ but you have " + money + "\n" +
+                                    "It costs " + solarpanel.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -335,7 +342,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 500$ but you have " + money + "\n" +
+                                    "It costs " + factory.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -349,7 +356,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 2500$ but you have " + money + "\n" +
+                                    "It costs " + oilrig.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -363,7 +370,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 3250$ but you have " + money + "\n" +
+                                    "It costs " + airpurifier.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -377,7 +384,7 @@ public class Main {
                                        "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 5000$ but you have " + money + "\n" +
+                                    "It costs " + nuclear2.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -391,7 +398,7 @@ public class Main {
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         } else {
                             System.out.println("Not enough money!\n" +
-                                    "It costs 25000$ but you have " + money + "\n" +
+                                    "It costs " + nuclear3.cost + " but you have " + money + "\n" +
                                     "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
                         }
                     }
@@ -403,7 +410,7 @@ public class Main {
                     thread.sleep(1000);
                     System.out.println(".");
                     thread.sleep(1000);
-                    break;
+                    select = false;
                 }
                 if (input.equals(command[3])) {
                     System.out.println("Farms:\n" +
