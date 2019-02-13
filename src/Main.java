@@ -26,9 +26,11 @@ public class Main {
         int buildings;
 
         boolean runGame = true;
+        boolean select = true;
 
-        String[] command = {"Build", "Sleep"};
-        String[] build = {"Farm", "Forest", "Windmills", "Solarpanel", "Factory", "Oilrig", "Airpurifier", "Nuclear2", "Nuclear3",};
+        String input;
+        String[] command = {"stop", "build", "sleep", "info"};
+        String[] building = {"farm", "forest", "windmills", "solarpanel", "factory", "oilrig", "airpurifier", "nuclear2", "nuclear3",};
         String[] ascii = {
                 //0 farm
                 "                         _.-^-._    .--.\n" +
@@ -225,9 +227,120 @@ public class Main {
                     buildings + " Buildings built\n" +
                     "\n" +
                     "\n" +
-                    "Commands can do the following commands: ");
+                    "You can do the following commands:\n" +
+                    "\n" +
+                    "Stop\n" +
+                    "Stops any action and returns you to this menu\n" +
+                    "\n" +
+                    "Build\n" +
+                    "Shows the build menu and allows you to build\n" +
+                    "\n" +
+                    "Sleep\n" +
+                    "Ends your turn and a new day will begin!\n" +
+                    "\n" +
+                    "Info\n" +
+                    "Shows you info about all buildings\n" +
+                    "\n" +
+                    "\n");
 
-            runGame = false;
+            while (select)
+            {
+
+                input = scan.nextLine();
+                input = input.toLowerCase();
+
+                if (input.equals(command[1]))
+                {
+                    System.out.println("What would you like to build?\n" +
+                            "\n" +
+                            "You have " + money + " money left\n" +
+                            "100$    Farm\n" +
+                            "500$    Forest\n" +
+                            "500$    Windmills\n" +
+                            "750$    Solarpanels\n" +
+                            "2500$   Oil rig\n" +
+                            "3250$   Air purifier\n" +
+                            "5000$   Nuclear power plant type 2\n" +
+                            "25000$  Nuclear power plant type 3");
+
+                    input = scan.nextLine();
+                    input = input.toLowerCase();
+
+                    if (input.equals(building[0]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[1]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[2]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[3]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[4]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[5]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[6]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                    if (input.equals(building[7]))
+                    {
+                        farm.buildings = farm.buildings + 1;
+                        System.out.println("You bought 1 farm\n" +
+                                "You have " + farm.buildings + " farms now\n" +
+                                "\n" +
+                                "Would you like to do anything else? Type one of the commands or 'Sleep' to go to the next day");
+                    }
+                }
+                if (input.equals(command[2]))
+                {
+                    System.out.println("sleep");
+                }
+                if (input.equals(command[3]))
+                {
+                    System.out.println("info");
+                }
+
+            }
 
         }
 
