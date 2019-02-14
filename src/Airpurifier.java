@@ -3,7 +3,7 @@ public class Airpurifier extends Building
 
     public Airpurifier()
     {
-        pollution = -1000;
+        pollution = -2500;
         totalPollution = 0;
         production = -500;
         totalProduction = 0;
